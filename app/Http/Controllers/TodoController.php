@@ -32,6 +32,20 @@ class TodoController extends Controller
     	return redirect('todo')
     	->with('success', 'Todo Deleted Successfully');
     }
+    
+    // Edit View Page
+    public function edit($id)
+    {
+        $datas = Todo::find($id);
+        return view('edit',compact('datas'));
+    }
 
+    public function update(Request $request,$id){
+        $todo = Todo::find($id);
+        $todo->detail = $request->todo; 
+        if($todo->save()){
+            return redirect('todo')->with('success','Todo Edited successfully');
+        }
+    }
 
 }

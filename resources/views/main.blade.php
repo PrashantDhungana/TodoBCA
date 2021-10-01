@@ -35,7 +35,7 @@
             <tr>
                 <td>{{$todo->id}}</td>
                 <td>{{$todo->detail}}</td>
-                <td><button>Edit</button></td>
+                <td><a class="btn btn-primary" href="/edit/{{$todo->id}}">Edit</a></td>
                 <td>
                     <form method="post" action="{{url('delete-todo/'.$todo->id)}}"  >
                             @csrf

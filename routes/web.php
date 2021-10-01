@@ -23,6 +23,9 @@ Route::get('/add_todo',[App\Http\Controllers\TodoController::class,'addTodo']);
 Route::post('/add_todo',[App\Http\Controllers\TodoController::class,'storeTodo']);
 Route::post('/delete-todo/{idtodelete}',[App\Http\Controllers\TodoController::class,'deleteTodo']);
 
+Route::get('/edit/{id}',[App\Http\Controllers\TodoController::class,'edit']);
+Route::post('/edit/{id}',[App\Http\Controllers\TodoController::class,'update']);
+
 
 
 
