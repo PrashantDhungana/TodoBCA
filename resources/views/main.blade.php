@@ -7,6 +7,23 @@
     <title>Todos</title>
 </head>
 <body>
+
+  <!--       @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('errors') }}
+            </div>
+        @endif -->
+
+        @if (session('success'))
+            <div style="background: blue;">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <div>
+            <a href="/add_todo"><button>Add New </button></a>
+        </div>
+
     <table border="1px solid black">
         <tr>
             <td>ID</td>
@@ -19,10 +36,17 @@
                 <td>{{$todo->id}}</td>
                 <td>{{$todo->detail}}</td>
                 <td><button>Edit</button></td>
-                <td><button>Delete</button></td>
+                <td>
+                    <form method="post" action="{{url('delete-todo/'.$todo->id)}}"  >
+                            @csrf
+                            <button class="btn btn-danger" >Delete </button>
+                    </form>
+                </td>
 
+              
             </tr>
         @endforeach
     </table>
 </body>
 </html>
+
