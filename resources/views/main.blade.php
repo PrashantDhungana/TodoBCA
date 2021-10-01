@@ -28,6 +28,7 @@
         <tr>
             <td>ID</td>
             <td>Detail</td>
+            <td>Image</td>
             <td colspan="2">Actions</td>
         </tr>
 
@@ -35,6 +36,7 @@
             <tr>
                 <td>{{$todo->id}}</td>
                 <td>{{$todo->detail}}</td>
+                <td><img src="/storage/images/{{$todo->images}}" height="100px" width="100px"></td>
                 <td><a class="btn btn-primary" href="/edit/{{$todo->id}}">Edit</a></td>
                 <td>
                     <form method="post" action="{{url('delete-todo/'.$todo->id)}}"  >

@@ -19,8 +19,24 @@ class TodoController extends Controller
 
     public function storeTodo(Request $request){
     	$todo_detail = $request->todo;
+        
+        if($request->hasFile('picture')){
+
+            $img = $request->file('picture');
+
+            $imgExt = $request->file('picture')->getClientOriginalExtension();
+            
+            $fullname = uniqid().time().".".$imgExt;
+            $img->storeAs('public/images',$fullname);
+                
+        }else{
+            $fullname = 'default.png';
+        }
+
+
     	$datatostore = new Todo;
     	$datatostore->detail = $todo_detail;
+        $datatostore->images = $fullname;
     	$datatostore->save();
     	return redirect('todo')->with('success', 'New todo Added Successfully');
     }
